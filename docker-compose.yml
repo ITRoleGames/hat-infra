@@ -1,6 +1,17 @@
 version: '2.4'
 
 services:
+  hat-frontend:
+    container_name: hat-frontend
+    build: ./../hat-frontend
+    image: hat-frontend:latest
+    mem_limit: 256m
+    mem_reservation: 128m
+    ports:
+      - 8999:80
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: always
   hat-api-gateway:
     container_name: hat-api-gateway
     build: ./../api-gateway
@@ -14,6 +25,8 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     restart: always
+    depends_on:
+      - hat-user-service
   hat-user-service:
     container_name: hat-user-service
     build: ./../hat-user-back
