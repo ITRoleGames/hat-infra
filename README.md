@@ -1,6 +1,6 @@
-#Shortcut инструкции
+# Shortcut инструкции
 
-##Postgres database
+## Postgres database
 Для того чтобы просто запустить posgresql можно воспользоваться этой командой:  
 ```
 docker run --name hat-user-db \
