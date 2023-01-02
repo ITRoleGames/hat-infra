@@ -1,5 +1,21 @@
 # Shortcut инструкции
 
+## Клонирование всех репозиториев  
+(скопируй в консоль, если лень писать руками)
+```
+git clone git@github.com:ITRoleGames/hat-game-back.git
+git clone git@github.com:ITRoleGames/hat-autotest.git
+git clone git@github.com:ITRoleGames/management.git
+git clone git@github.com:ITRoleGames/hat-user-back.git
+git clone git@github.com:ITRoleGames/hat-db.git
+git clone git@github.com:ITRoleGames/hat-api-gateway.git
+git clone git@github.com:ITRoleGames/hat-infra.git
+git clone git@github.com:ITRoleGames/hat-frontend.git
+git clone git@github.com:ITRoleGames/hat-api.git
+git clone git@github.com:ITRoleGames/hat-js-backend.git
+```
+
+
 ## Postgres database
 Для того чтобы просто запустить posgresql можно воспользоваться этой командой:  
 ```
