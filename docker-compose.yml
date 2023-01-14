@@ -14,7 +14,7 @@ services:
     restart: always
   hat-api-gateway:
     container_name: hat-api-gateway
-    build: ./../api-gateway
+    build: ./../hat-api-gateway
     image: hat-api-gateway:latest
     mem_limit: 512m
     mem_reservation: 256m
@@ -44,14 +44,32 @@ services:
       - "host.docker.internal:host-gateway"
     restart: always
     depends_on:
-      - "hat-user-db"
-  hat-user-db:
+      - "hat-db"
+  hat-game-service:
+    container_name: hat-game-service
+    build: ./../hat-game-back
+    image: hat-game:latest
+    mem_limit: 512m
+    mem_reservation: 256m
+    ports:
+      - 9000:9000
+    environment:
+      APP_HOST: 172.17.0.1
+      DB_PORT: 5401
+      DB_USER: hat_user
+      DB_PASSWORD: test1234
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: always
+    depends_on:
+      - "hat-db"
+  hat-db:
     image: 'postgres:15'
-    container_name: hat-user-db
+    container_name: hat-db
     ports:
       - 5401:5432
     volumes:
-      - ./init_hat_user_db.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init_db.sql:/docker-entrypoint-initdb.d/init.sql
       - hat_user_db_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=hat_user
