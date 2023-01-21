@@ -78,5 +78,13 @@ services:
     restart: always
     extra_hosts:
       - "host.docker.internal:host-gateway"
+  hat-mq:
+    image: 'bitnami/rabbitmq:3.11.6'
+    container_name: 'rabbitmq'
+    ports:
+      - 5672:5672
+    environment:
+      - RABBITMQ_USERNAME=hat_user
+      - RABBITMQ_PASSWORD=test1234
 volumes:
   hat_user_db_data:
