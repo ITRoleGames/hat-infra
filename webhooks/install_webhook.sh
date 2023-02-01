@@ -25,6 +25,39 @@ cat > $hooksjson_location <<EOF
           }
         ],
     "response-message": "Redeploying API-Gateway..."
+  },
+  {
+    "id": "redeploy-frontend",
+    "execute-command": "bash",
+        "pass-arguments-to-command": [
+          {
+            "source": "string",
+            "name": "/opt/scripts/redeploy-frontend.sh"
+          }
+        ],
+    "response-message": "Redeploying Frontend..."
+  },
+  {
+    "id": "redeploy-game",
+    "execute-command": "bash",
+        "pass-arguments-to-command": [
+          {
+            "source": "string",
+            "name": "/opt/scripts/redeploy-game.sh"
+          }
+        ],
+    "response-message": "Redeploying Game service..."
+  },
+  {
+    "id": "redeploy-user",
+    "execute-command": "bash",
+        "pass-arguments-to-command": [
+          {
+            "source": "string",
+            "name": "/opt/scripts/redeploy-user.sh"
+          }
+        ],
+    "response-message": "Redeploying User service..."
   }
 ]
 
