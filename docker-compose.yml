@@ -20,6 +20,7 @@ services:
     mem_reservation: 256m
     ports:
       - 9002:9002
+      - 9003:9003
     environment:
       APP_HOST: 172.17.0.1
     extra_hosts:
@@ -79,12 +80,15 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
   hat-mq:
-    image: 'bitnami/rabbitmq:3.11.6'
-    container_name: 'rabbitmq'
+    image: 'rabbitmq:3-management-alpine'
+    container_name: 'hat-mq'
     ports:
       - 5672:5672
+      - 15672:15672
     environment:
-      - RABBITMQ_USERNAME=hat_user
-      - RABBITMQ_PASSWORD=test1234
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 volumes:
   hat_user_db_data:
