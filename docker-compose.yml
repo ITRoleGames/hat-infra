@@ -14,7 +14,11 @@ services:
     restart: always
   hat-api-gateway:
     container_name: hat-api-gateway
-    build: ./../hat-api-gateway
+    build:
+      context: ./../hat-api-gateway
+      args:
+        GPR_USER: ${GPR_USER}
+        GPR_KEY: ${GPR_KEY}
     image: hat-api-gateway:latest
     mem_limit: 512m
     mem_reservation: 256m
@@ -48,7 +52,11 @@ services:
       - "hat-db"
   hat-game-service:
     container_name: hat-game-service
-    build: ./../hat-game-back
+    build:
+      context: ./../hat-game-back
+      args:
+        GPR_USER: ${GPR_USER}
+        GPR_KEY: ${GPR_KEY}
     image: hat-game:latest
     mem_limit: 512m
     mem_reservation: 256m
