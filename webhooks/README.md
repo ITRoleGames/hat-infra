@@ -9,7 +9,7 @@
 systemctl daemon-reload
 systemctl start webhook.service
 ```
-5. Проверить что хук доступен по адрусе HOST:POST/hooks/redeploy-api-gateway
+5. Проверить что хук доступен по адрусе HOST:PORT/hooks/redeploy-api-gateway
 # Добавление нового webhook
 1. Создать новый .sh в `/webhooks/scripts` и скопировать на сервер в  `/opt/scripts`
 2. Добавить хук в `/opt/hooks/hooks.json` по аналогии с `redeploy-api-gateway`
